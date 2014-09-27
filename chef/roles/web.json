@@ -1,0 +1,10 @@
+{
+    "name": "web",
+    "description": "Web server role",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[apache2]",
+        "recipe[php]"
+    ]
+}
