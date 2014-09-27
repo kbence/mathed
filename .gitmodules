@@ -1,3 +1,6 @@
 [submodule "chef/cookbooks/apt"]
 	path = chef/cookbooks/apt
 	url = https://github.com/cookbooks/apt
+[submodule "yii"]
+	path = yii
+	url = https://github.com/yiisoft/yii.git
