@@ -19,6 +19,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :chef_solo do |chef|
         chef.cookbooks_path = "chef/cookbooks"
         chef.roles_path = "chef/roles"
+
         chef.add_role "web"
+        chef.add_role "database"
+
+        config = JSON.parse(File.read("#{__dir__}/config.json"))
+
+        chef.json = {
+            'database' => {
+                'mysql' => {
+                    'users' => [{
+                        'username' => config['mysql']['username'],
+                        'password' => config['mysql']['password'],
+                        'databases' => [config['mysql']['database']]
+                    }],
+                    'databases' => [
+                        config['mysql']['database']
+                    ]
+                }
+            }
+        }
     end
 end
