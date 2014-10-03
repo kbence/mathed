@@ -30,7 +30,7 @@ users.each do |user|
         EOF
     end
 
-    if databases === Array
+    if databases.class == Array
         databases.each do |db|
             execute "grant access on #{db} to #{username}" do
                 command <<-EOF
