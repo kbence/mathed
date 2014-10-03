@@ -7,6 +7,7 @@
         "recipe[apt]",
         "recipe[apache2]",
         "recipe[php]",
+        "recipe[php::phing]",
         "recipe[sites::mathed]",
         "recipe[apache2::reload]"
     ]
