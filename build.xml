@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Mathed" default="build">
+    <target name="lint">
+        <echo msg="Linging php files" />
+        <phplint haltonfailure="true" level="debug">
+            <fileset dir="${project.basedir}/webroot/protected">
+                <include name="**/*.php" />
+            </fileset>
+        </phplint>
+    </target>
+    <target name="build">
+        <phpunit pharlocation="/usr/local/bin/phpunit" haltonerror="true" haltonfailure="true">
+            <batchtest>
+                <fileset dir="webroot/protected/tests">
+                    <include name="**/*Test.php" />
+                </fileset>
+            </batchtest>
+        </phpunit>
+    </target>
+</project>
