@@ -1,14 +1,13 @@
 <?php
 
+$config = json_decode(file_get_contents(dirname(__FILE__) . '/../../../config.json'));
+$mysql = $config->mysql;
+
 // This is the database connection configuration.
 return array(
-	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-	// uncomment the following lines to use a MySQL database
-	/*
-	'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+	'connectionString' => "mysql:host=$mysql->host;dbname=$mysql->database",
 	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
+	'username' => $mysql->username,
+	'password' => $mysql->password,
 	'charset' => 'utf8',
-	*/
 );
