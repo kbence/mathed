@@ -1,0 +1,42 @@
+<style type="text/css">
+#wl_editor {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	padding: 0px;
+	overflow: auto;
+	width: 70%; 
+	display: block;
+}
+#wl_divider {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	cursor: col-resize;
+	background-color: #dfe7f1;
+	z-index: 10;
+	width: 10px;
+	left: 70%; 
+	display: block; 
+	right: auto;
+}
+#wl_preview {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	padding: 0px;
+	overflow: auto;
+	width: 29%; 
+	display: block;
+}
+#wl_document {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	height: 400px;
+	width: 98%;
+	overflow: none; 
+	display: block;
+}
+</style>
