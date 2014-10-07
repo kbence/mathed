@@ -125,6 +125,9 @@ class DbPatcher
 
     protected function execute($statement)
     {
+        if (strlen(trim($statement)) == 0)
+            return;
+
         $result = $this->conn->query($statement);
 
         if (!$result)
