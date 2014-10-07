@@ -16,7 +16,6 @@ class EditorController extends Controller
         /** @var CClientScript $cs */
         $baseUrl = Yii::app()->request->baseUrl;
         $cs = Yii::app()->getClientScript();
-//        $cs->registerPackage('jquery');
         $cs->registerCoreScript('jquery');
         $cs->registerScriptFile($baseUrl . '/js/ace-builds/src-noconflict/ace.js',
             CClientScript::POS_END);
