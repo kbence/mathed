@@ -4,3 +4,6 @@
 [submodule "yii"]
 	path = yii
 	url = https://github.com/yiisoft/yii.git
+[submodule "webroot/js/ace-builds"]
+	path = webroot/js/ace-builds
+	url = https://github.com/ajaxorg/ace-builds
