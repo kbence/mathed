@@ -6,6 +6,8 @@
     "run_list": [
         "recipe[apt]",
         "recipe[apache2]",
+        "recipe[tex]",
+        "recipe[tex::hevea]",
         "recipe[php]",
         "recipe[php::mysql]",
         "recipe[php::phpunit]",
