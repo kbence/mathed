@@ -17,17 +17,24 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		if($this->getUser($this->username, $this->password))
+			$this->errorCode = self::ERROR_NONE;
 		else
-			$this->errorCode=self::ERROR_NONE;
+            $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
+
 		return !$this->errorCode;
 	}
+
+    protected function getUser($username, $password)
+    {
+        /** @var CDbConnection $db */
+        $db = Yii::app()->db;
+
+        $command = $db->createCommand('SELECT * FROM user WHERE name = :username AND ' .
+                'password = MD5(:password)');
+        $command->bindParam('username', $username);
+        $command->bindParam('password', $password);
+
+        return $command->queryRow();
+    }
 }
