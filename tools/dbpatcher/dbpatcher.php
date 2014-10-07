@@ -22,6 +22,18 @@ class DbPatch
     {
         return explode(';', $this->content);
     }
+
+    public static function compare(DbPatch $patch1, DbPatch $patch2)
+    {
+        if ($patch1->id < $patch2->id) return -1;
+        if ($patch1->id > $patch2->id) return 1;
+        return 0;
+    }
+
+    public static function create($filename)
+    {
+        return new DbPatch($filename);
+    }
 }
 
 class DbPatcher
@@ -72,9 +84,7 @@ class DbPatcher
         $this->createPatchTable();
 
 
-        foreach ($this->getPatches() as $patchFile) {
-            $patch = new DbPatch($patchFile);
-
+        foreach ($this->getPatches() as $patch) {
             if (!$this->isApplied($patch->id)) {
                 $this->apply($patch);
             }
@@ -83,7 +93,11 @@ class DbPatcher
 
     protected function getPatches()
     {
-        return glob(dirname(__FILE__) . '/patches/*.sql');
+        $patchFiles = glob(dirname(__FILE__) . '/patches/*.sql');
+        $patches = array_map(array('DbPatch', 'create'), $patchFiles);
+        usort($patches, array('DbPatch', 'compare'));
+
+        return $patches;
     }
 
     protected function isApplied($id)
