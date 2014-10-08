@@ -1,10 +1,13 @@
 ﻿<?php
 /* @var $this SiteController */
 $this->pageTitle = Yii::app()->name;
-Yii::app()->clientScript->registerCoreScript('jquery');
-include 'style/default.css';
-include 'style/editor.css';
-include 'script/default.js';
+/* @var CClientScript $clientScript */
+$clientScript = Yii::app()->clientScript;
+$clientScript->registerCoreScript('jquery');
+$clientScript->registerScriptFile('/js/default.js');
+$clientScript->registerScriptFile('/js/editor.js', CClientScript::POS_END);
+$clientScript->registerCssFile('/css/default.css');
+$clientScript->registerCssFile('/css/editor.css');
 ?>
 Editor
   <div id="wl_document" onMouseUp = "moveDividerOut()">
@@ -20,10 +23,6 @@ a nézése is halált hozó: valamely ember vagy állat tekintetének tüzébe k
 A Baziliskus pediglen féli a kakasnak rikkantását, minek hallatán menten kiszenved. 
 \end
 </pre>
-
-	<?php
-		include 'script/editor.js';
-	?>    
     </div>
     <div id="wl_divider" onMouseMove="moveDivider()" onmousedown="moveDividerClick()" onmouseup="moveDividerOut()"> </div>
     <div id="wl_preview"> 

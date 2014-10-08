@@ -1,5 +1,3 @@
-<script language="javascript">
-<!--
 var click = false;
 var cursorX;
 var cursorY;
@@ -30,5 +28,3 @@ function moveDividerOut(){
 function moveDividerClick(){ 
 	click = true;
 }
-// -->
-</script>
