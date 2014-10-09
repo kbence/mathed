@@ -20,8 +20,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         chef.cookbooks_path = "chef/cookbooks"
         chef.roles_path = "chef/roles"
 
-        chef.add_role "web"
         chef.add_role "database"
+        chef.add_role "web"
 
         config = JSON.parse(File.read("#{__dir__}/config.json"))
 
