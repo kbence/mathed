@@ -2,6 +2,10 @@
 
 class Conversion
 {
+    protected $inputFiles = array();
+    protected $outputFiles = array();
+    protected $cleanupFiles = array();
+
     protected function tempFileName($suffix = '')
     {
         return tempnam(sys_get_temp_dir(), 'mathed') . $suffix;
@@ -28,7 +32,7 @@ class Conversion
 
         $options = (isset($args[0]) && is_array($args[0])) ? array_shift($args) : array();
         $cwd = isset($options['cwd']) ? $options['cwd'] : null;
-        $timeout =  isset($options['timeout']) ? $options['timeout'] : null;
+        $timeout = isset($options['timeout']) ? $options['timeout'] : null;
 
         if (count($args) < 1) {
             throw new Exception("Unspecified command!");
@@ -98,5 +102,56 @@ class Conversion
         }
 
         return $bytes;
+    }
+
+    public function addInputFile($file)
+    {
+        $this->inputFiles[] = $file;
+    }
+
+    protected function addOutputFile($file)
+    {
+        $this->outputFiles[] = $file;
+    }
+
+    public function getOutputFiles()
+    {
+        return $this->outputFiles;
+    }
+
+    protected function addFileToCleanup($file)
+    {
+        $this->cleanupFiles[] = $file;
+    }
+
+    public function cleanup()
+    {
+        $cleanupFiles = array_merge($this->outputFiles, $this->cleanupFiles);
+
+        foreach ($cleanupFiles as $file) {
+            $this->removeFile($file);
+        }
+    }
+
+    protected function removeFile($file)
+    {
+        if (file_exists($file)) {
+            if (is_dir($file)) {
+                if ($dir = opendir($file)) {
+                    while ($fileInDir = readdir($dir)) {
+                        if (in_array($fileInDir, array('.', '..')))
+                            continue;
+
+                        $this->removeFile($file . '/' . $fileInDir);
+                    }
+
+                    closedir($dir);
+                }
+
+                rmdir($file);
+            } else {
+                unlink($file);
+            }
+        }
     }
 }

@@ -2,15 +2,18 @@
 
 class TexToPdfConversion extends Conversion
 {
-    public function __construct()
+    public function __construct($texSource)
     {
+        $this->texSource = $texSource;
     }
 
-    public function convert($texSource)
+    public function convert()
     {
-        $texFile = $this->saveContent($texSource, '/document.tex');
-        $texDir = dirname($texFile);
         $pdfFile = null;
+
+        $texFile = $this->saveContent($this->texSource, '/document.tex');
+        $texDir = dirname($texFile);
+        $this->addFileToCleanup($texDir);
 
         $result = $this->execute(array('cwd' => $texDir, 'timeout' => 5),
             'pdflatex', '-interaction', 'nonstopmode', 'document.tex');
@@ -31,7 +34,7 @@ class TexToPdfConversion extends Conversion
             throw new Exception($result['message']);
         }
 
-        return $pdfFile;
+        $this->addOutputFile($pdfFile);
     }
 }
 
