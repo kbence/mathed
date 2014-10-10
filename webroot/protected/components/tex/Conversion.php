@@ -20,6 +20,20 @@ abstract class Conversion
         return tempnam(sys_get_temp_dir(), 'mathed') . $suffix;
     }
 
+    protected function createTempDirectory()
+    {
+        $tempDir = $this->tempFileName();
+
+        if (file_exists($tempDir)) {
+            unlink($tempDir);
+        }
+
+        mkdir($tempDir, 0777, true);
+        $this->addFileToCleanup($tempDir);
+
+        return $tempDir;
+    }
+
     protected function saveContent($content, $suffix = '')
     {
         $tempFileName = $this->tempFileName($suffix);
@@ -131,7 +145,11 @@ abstract class Conversion
 
     protected function addOutputFile($file)
     {
-        $this->outputFiles[] = $file;
+        if (is_array($file)) {
+            $this->outputFiles = array_merge($this->outputFiles, $file);
+        } else {
+            $this->outputFiles[] = $file;
+        }
     }
 
     public function getOutputFiles()
