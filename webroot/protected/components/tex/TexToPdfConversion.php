@@ -2,25 +2,29 @@
 
 class TexToPdfConversion extends Conversion
 {
-    public function __construct($texSource)
+    const INPUT_SUFFIX = '.tex';
+    const OUTPUT_SUFFIX = '.pdf';
+
+    public function __construct()
     {
-        $this->texSource = $texSource;
     }
 
-    public function convert()
+    protected function convertFile($file)
     {
         $pdfFile = null;
 
-        $texFile = $this->saveContent($this->texSource, '/document.tex');
-        $texDir = dirname($texFile);
-        $this->addFileToCleanup($texDir);
+//        $texFile = $this->saveContent($this->texSource, '/document.tex');
+        $texDir = dirname($file);
+        $texBasename = basename($file, self::INPUT_SUFFIX);
 
         $result = $this->execute(array('cwd' => $texDir, 'timeout' => 5),
-            'pdflatex', '-interaction', 'nonstopmode', 'document.tex');
+            'pdflatex', '-interaction', 'nonstopmode', $texBasename . self::INPUT_SUFFIX);
 
         if ($result['status'] == 'OK') {
-            if (file_exists($texDir . '/document.pdf')) {
-                $pdfFile = $texDir . '/document.pdf';
+            $expectedOutput = $texDir . '/' . $texBasename . self::OUTPUT_SUFFIX;
+
+            if (file_exists($expectedOutput)) {
+                $pdfFile = $expectedOutput;
             } else {
                 throw new Exception(
                     "Error occured while running pdftex:\n\n" .

@@ -1,10 +1,19 @@
 <?php
 
-class Conversion
+abstract class Conversion
 {
     protected $inputFiles = array();
     protected $outputFiles = array();
     protected $cleanupFiles = array();
+
+    public function convert()
+    {
+        foreach ($this->inputFiles as $inputFile) {
+            $this->convertFile($inputFile);
+        }
+    }
+
+    protected abstract function convertFile($file);
 
     protected function tempFileName($suffix = '')
     {
@@ -104,9 +113,20 @@ class Conversion
         return $bytes;
     }
 
+    public function saveAsInputFile($content, $suffix = '')
+    {
+        $inputFile = $this->saveContent($content, '/document' . $suffix);
+        $this->addInputFile($inputFile);
+        $this->addFileToCleanup(dirname($inputFile));
+    }
+
     public function addInputFile($file)
     {
-        $this->inputFiles[] = $file;
+        if (is_array($file)) {
+            $this->inputFiles = array_merge($this->inputFiles, $file);
+        } else {
+            $this->inputFiles[] = $file;
+        }
     }
 
     protected function addOutputFile($file)
