@@ -13,7 +13,6 @@ class TexToPdfConversion extends Conversion
     {
         $pdfFile = null;
 
-//        $texFile = $this->saveContent($this->texSource, '/document.tex');
         $texDir = dirname($file);
         $texBasename = basename($file, self::INPUT_SUFFIX);
 
