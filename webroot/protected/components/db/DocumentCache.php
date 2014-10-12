@@ -37,5 +37,21 @@ class DocumentCache
             ));
         }
     }
+
+    public function getPngImage($documentId, $part = 0)
+    {
+        $cmd = $this->dbConnetion->createCommand(
+            'SELECT content FROM document_cache ' .
+            'WHERE document_id = :document_id ' .
+            'AND part = :part'
+        );
+
+        $content = $cmd->queryScalar(array(
+            'document_id' => $documentId,
+            'part' => $part
+        ));;
+
+        return $content;
+    }
 }
 
