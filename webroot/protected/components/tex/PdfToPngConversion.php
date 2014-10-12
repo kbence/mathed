@@ -2,6 +2,16 @@
 
 class PdfToPngConversion extends Conversion
 {
+    public function getDefaultInputExtension()
+    {
+        return '.pdf';
+    }
+
+    public function getDefaultOutputExtension()
+    {
+        return '.png';
+    }
+
     protected function convertFile($file)
     {
         $tempDir = $this->createTempDirectory();

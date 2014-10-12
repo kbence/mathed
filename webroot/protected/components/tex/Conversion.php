@@ -127,6 +127,9 @@ abstract class Conversion
         return $bytes;
     }
 
+    public abstract function getDefaultInputExtension();
+    public abstract function getDefaultOutputExtension();
+
     public function saveAsInputFile($content, $suffix = '')
     {
         $inputFile = $this->saveContent($content, '/document' . $suffix);

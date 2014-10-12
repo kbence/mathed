@@ -20,4 +20,22 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+    /**
+     * @return CHttpRequest
+     */
+    public function getRequest()
+    {
+        return Yii::app()->request;
+    }
+
+    public function getResponse()
+    {
+        return Yii::app()->response;
+    }
+
+    public function getDatabase()
+    {
+        return Yii::app()->db;
+    }
 }

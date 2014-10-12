@@ -9,6 +9,16 @@ class TexToPdfConversion extends Conversion
     {
     }
 
+    public function getDefaultInputExtension()
+    {
+        return '.tex';
+    }
+
+    public function getDefaultOutputExtension()
+    {
+        return '.pdf';
+    }
+
     protected function convertFile($file)
     {
         $pdfFile = null;

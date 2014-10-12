@@ -32,7 +32,7 @@ class ConversionPipeline {
             if (isset($lastConversion)) {
                 $conversion->addInputFile($lastConversion->getOutputFiles());
             } else {
-                $conversion->saveAsInputFile($content);
+                $conversion->saveAsInputFile($content, $conversion->getDefaultInputExtension());
             }
 
             $conversion->convert();
