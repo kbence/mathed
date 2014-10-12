@@ -17,6 +17,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.components.tex.*',
+		'application.components.util.*',
 	),
 
 	'modules'=>array(
