@@ -4,3 +4,4 @@
 *.iml
 /config.json
 webroot/assets/*
+/vendor
