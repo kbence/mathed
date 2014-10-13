@@ -32,7 +32,6 @@ var Editor = (function() {
                 context: this
             }).success(function(data) {
                 this.progress('Saved');
-                console.log(typeof data, data);
 
                 if (data.id) {
                     documentId = data.id;
