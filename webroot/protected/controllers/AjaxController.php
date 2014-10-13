@@ -10,15 +10,17 @@ class AjaxController extends Controller
     {
         $documentId = $this->getRequest()->getParam('id', -1);
         $source = $this->getRequest()->getParam('tex');
+        $title = $this->getRequest()->getParam('title');
+
         $document = new Document($this->getDatabase());
         $result = array();
 
         if ($documentId == -1) {
-            $newId = $document->saveNew($source);
+            $newId = $document->saveNew($title, $source);
             $result['status'] = 'OK';
             $result['id'] = $newId;
         } else {
-            $document->save($documentId, $source);
+            $document->save($documentId, $title, $source);
             $result['status'] = 'OK';
         }
         echo json_encode($result);

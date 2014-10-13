@@ -15,7 +15,8 @@ var Editor = (function() {
 
         save: function () {
             var document = {
-                tex: editor.getValue()
+                tex: editor.getValue(),
+                title: $('#document-title').val()
             };
 
             if (documentId) {

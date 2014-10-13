@@ -18,7 +18,8 @@ $clientScript->registerCssFile('/css/editor.css');
 Editor
 <button onclick="Editor.save()">Save</button>
 <button onclick="Editor.saveAndPreview()">Save & preview</button>
-<span id="progress-text"></span>
+<span id="progress-text"></span><br/>
+Title: <input type="text" id="document-title" size="64" value="<?php echo $document['title'] ?>"/>
 <div id="wl_document" onMouseUp="moveDividerOut()">
     <div id="wl_editor">
         <pre id="editor"><?php echo $document['content'] ?></pre>

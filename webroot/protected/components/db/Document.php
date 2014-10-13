@@ -9,35 +9,39 @@ class Document
         $this->dbConnection = $dbConnection;
     }
 
-    public function saveNew($content)
+    public function saveNew($title, $content)
     {
         $cmd = $this->dbConnection->createCommand(
             'INSERT INTO document SET ' .
             'owner = -1, ' .
-            'title = "", ' .
+            'title = :title, ' .
             'content = :content'
         );
 
         $transaction = $this->dbConnection->beginTransaction();
-        $cmd->execute(array('content' => $content));
+        $cmd->execute(array(
+            'content' => $content,
+            'title' => $title
+        ));
         $newDocumentId = $this->dbConnection->getLastInsertID();
         $transaction->commit();
 
         return $newDocumentId;
     }
 
-    public function save($documentId, $content)
+    public function save($documentId, $title, $content)
     {
         $cmd = $this->dbConnection->createCommand(
             'UPDATE document SET ' .
-                'title = "", ' .
+                'title = :title, ' .
                 'content = :content ' .
-            'WHERE id = :document_id'
+            'WHERE id = :id'
         );
 
         return $cmd->execute(array(
-            'document_id' => $documentId,
+            'id' => $documentId,
             'content' => $content,
+            'title' => $title
         ));
     }
 
