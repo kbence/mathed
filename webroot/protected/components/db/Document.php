@@ -40,4 +40,13 @@ class Document
             'content' => $content,
         ));
     }
+
+    public function listDocuments()
+    {
+        $cmd = $this->dbConnection->createCommand(
+            'SELECT id, title FROM document'
+        );
+
+        return $cmd->queryAll(true);
+    }
 }

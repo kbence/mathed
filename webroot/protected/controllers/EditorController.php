@@ -13,6 +13,16 @@ class EditorController extends Controller
 
     public function actionIndex()
     {
+        $document = new Document($this->getDatabase());
+        $docs = $document->listDocuments();
+
+        $this->render('index', array(
+            'documents' => $docs
+        ));
+    }
+
+    public function actionEdit()
+    {
         /** @var CClientScript $cs */
         $baseUrl = Yii::app()->request->baseUrl;
         $cs = Yii::app()->getClientScript();
@@ -20,6 +30,6 @@ class EditorController extends Controller
         $cs->registerScriptFile($baseUrl . '/js/ace-builds/src-noconflict/ace.js',
             CClientScript::POS_END);
 
-        $this->render('index');
+        $this->render('edit');
     }
 }
