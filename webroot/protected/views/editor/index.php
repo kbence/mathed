@@ -10,8 +10,11 @@ $clientScript->registerCssFile('/css/default.css');
 $clientScript->registerCssFile('/css/editor.css');
 ?>
 Editor
+<button onclick="Editor.save()">Save</button>
+<button onclick="Editor.saveAndPreview()">Save & preview</button>
+<span id="progress-text"></span>
   <div id="wl_document" onMouseUp = "moveDividerOut()">
-    <div id="wl_editor"> 
+    <div id="wl_editor">
 	<pre id="editor">\begin{page}
 A kies honunkban leledzõ temérdek félelmetes bestia és szörny-állat között 
 aligha akad csodásabb és halálosabb fajzat, mint a Baziliskus, más néven 
