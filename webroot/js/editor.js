@@ -7,6 +7,10 @@ var Editor = (function() {
             editor = ace.edit('editor');
             editor.setTheme('ace/theme/dawn');
             editor.getSession().setMode('ace/mode/tex');
+
+            if (currentDocumentId) {
+                documentId = currentDocumentId;
+            }
         },
 
         save: function () {

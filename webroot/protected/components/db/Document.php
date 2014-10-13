@@ -41,6 +41,17 @@ class Document
         ));
     }
 
+    public function load($documentId)
+    {
+        $cmd = $this->dbConnection->createCommand(
+            'SELECT * FROM document WHERE id = :id'
+        );
+
+        return $cmd->queryRow(true, array(
+            'id' => $documentId
+        ));
+    }
+
     public function listDocuments()
     {
         $cmd = $this->dbConnection->createCommand(

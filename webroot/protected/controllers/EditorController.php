@@ -24,12 +24,18 @@ class EditorController extends Controller
     public function actionEdit()
     {
         /** @var CClientScript $cs */
+        $documentId = $this->getRequest()->getParam('id');
+        $document = new Document($this->getDatabase());
+        $doc = $document->load($documentId);
+
         $baseUrl = Yii::app()->request->baseUrl;
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript('jquery');
         $cs->registerScriptFile($baseUrl . '/js/ace-builds/src-noconflict/ace.js',
             CClientScript::POS_END);
 
-        $this->render('edit');
+        $this->render('edit', array(
+            'document' => $doc
+        ));
     }
 }
