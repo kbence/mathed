@@ -2,7 +2,13 @@ var Editor = (function() {
     var editor;
     var documentId;
 
+    function progress(message) {
+        $('#progress-text').text(message ? message : '');
+    }
+
     function generateDocument() {
+        progress("Generating document...");
+
         $.ajax({
             url: '/index.php?r=ajax/generateDocument',
             type: 'POST',
@@ -12,6 +18,8 @@ var Editor = (function() {
             },
             dataType: 'json'
         }).success(function(data) {
+            progress("");
+
             previewContent = '';
 
             for (var i in data.images) {
@@ -44,7 +52,7 @@ var Editor = (function() {
                 document.id = documentId;
             }
 
-            this.progress('Saving...');
+            progress('Saving...');
 
             $.ajax({
                 url: '/index.php?r=ajax/saveDocument',
@@ -53,7 +61,7 @@ var Editor = (function() {
                 dataType: 'json',
                 context: this
             }).success(function(data) {
-                this.progress('Saved');
+                progress('Saved');
 
                 if (data.id) {
                     documentId = data.id;
@@ -63,16 +71,12 @@ var Editor = (function() {
                     callback();
                 }
             }).fail(function() {
-                this.progress('Failed to save!');
+                progress('Failed to save!');
             });
         },
 
         saveAndPreview: function () {
             this.save(generateDocument);
-        },
-
-        progress: function(message) {
-            $('#progress-text').text(message ? message : '');
         }
     }
 })();
