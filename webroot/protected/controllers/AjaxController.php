@@ -39,7 +39,11 @@ class AjaxController extends Controller
             $parts = $cache->listDocumentParts($documentId, 'png');
             $imageUrls = array();
             foreach ($parts as $part) {
-                $imageUrls[] = $this->createUrl('getImage', array('id' => $documentId, 'part' => $part));
+                $imageUrls[] = $this->createUrl('getImage', array(
+                    'id' => $documentId,
+                    'part' => $part,
+                    'random' => microtime(true)
+                ));
             }
 
             $result['status'] = 'OK';
