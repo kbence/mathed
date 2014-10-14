@@ -1,0 +1,3 @@
+
+ALTER TABLE document_cache
+    MODIFY COLUMN content LONGBLOB NOT NULL;
