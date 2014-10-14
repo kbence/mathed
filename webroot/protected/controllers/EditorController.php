@@ -21,6 +21,17 @@ class EditorController extends Controller
         ));
     }
 
+    public function actionNew()
+    {
+        $templateDir = dirname(__FILE__) . '/../data/templates';
+
+        $fileUtil = new FileUtil();
+        $document = new Document($this->getDatabase());
+        $documentId = $document->saveNew('Untitled document', $fileUtil->getContents($templateDir . '/article.tex'));
+
+        $this->redirect($this->createUrl('edit', array('id' => $documentId)));
+    }
+
     public function actionEdit()
     {
         /** @var CClientScript $cs */

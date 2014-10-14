@@ -6,6 +6,8 @@ $clientScript = Yii::app()->clientScript;
 $clientScript->registerCoreScript('jquery');
 ?>
 
+<a href="<?php echo $this->createUrl('new') ?>">Create new</a>
+
 <table>
     <?php foreach ($documents as $doc): ?>
         <tr>
