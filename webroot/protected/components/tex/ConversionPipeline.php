@@ -48,11 +48,6 @@ class ConversionPipeline {
             }
         }
 
-        // cleanup
-        foreach ($pendingConversions as $conversion) {
-            $conversion->cleanup();
-        }
-
         return $outputContents;
     }
 
