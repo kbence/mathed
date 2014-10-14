@@ -29,14 +29,22 @@ class AjaxController extends Controller
     public function actionGenerateDocument()
     {
         $result = array();
-        $documentId = $this->getRequest()->getParam('document_id', -1);
+        $documentId = $this->getRequest()->getParam('id');
         $source = $this->getRequest()->getParam('tex');
 
         try {
             $cache = new DocumentCache($this->getDatabase());
             $cache->convertTexDocument($documentId, $source);
 
+            $parts = $cache->listDocumentParts($documentId, 'png');
+            $imageUrls = array();
+            foreach ($parts as $part) {
+                $imageUrls[] = $this->createUrl('getImage', array('id' => $documentId, 'part' => $part));
+            }
+
             $result['status'] = 'OK';
+            $result['images'] = $imageUrls;
+            $result['parts'] = $parts;
         } catch (Exception $e) {
             $result['status'] = 'Error';
             $result['message'] = $e->getMessage();
@@ -47,7 +55,7 @@ class AjaxController extends Controller
 
     public function actionGetImage()
     {
-        $documentId = $this->getRequest()->getParam('document_id');
+        $documentId = $this->getRequest()->getParam('id');
         $cache = new DocumentCache($this->getDatabase());
         $content = $cache->getPngImage($documentId);
 

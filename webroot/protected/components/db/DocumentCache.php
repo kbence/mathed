@@ -20,6 +20,8 @@ class DocumentCache
         $conversionResult = $conversion->convertContent($texSource);
         $conversion->cleanup();
 
+        $this->cleanCache($documentId, 'png');
+
         $cmd = $this->dbConnetion->createCommand(
             'INSERT INTO document_cache SET ' .
             'document_id = :document_id, ' .
@@ -38,6 +40,24 @@ class DocumentCache
         }
     }
 
+    public function listDocumentParts($documentId, $type)
+    {
+        $cmd = $this->dbConnetion->createCommand(
+            'SELECT part FROM document_cache ' .
+            'WHERE document_id = :id ' .
+            'AND type = :type'
+        );
+
+        $rows = $cmd->queryAll(true, array('id' => $documentId, 'type' => $type));
+        $parts = array();
+
+        foreach ($rows as $row) {
+            $parts[] = $row['part'];
+        }
+
+        return $parts;
+    }
+
     public function getPngImage($documentId, $part = 0)
     {
         $cmd = $this->dbConnetion->createCommand(
@@ -52,6 +72,20 @@ class DocumentCache
         ));;
 
         return $content;
+    }
+
+    public function cleanCache($documentId, $type)
+    {
+        $cmd = $this->dbConnetion->createCommand(
+            'DELETE FROM document_cache ' .
+            'WHERE document_id = :id ' .
+            'AND type = :type'
+        );
+
+        return $cmd->execute(array(
+            'id' => $documentId,
+            'type' => $type
+        ));
     }
 }
 

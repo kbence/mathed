@@ -2,6 +2,27 @@ var Editor = (function() {
     var editor;
     var documentId;
 
+    function generateDocument() {
+        $.ajax({
+            url: '/index.php?r=ajax/generateDocument',
+            type: 'POST',
+            data: {
+                id: documentId,
+                tex: editor.getValue()
+            },
+            dataType: 'json'
+        }).success(function(data) {
+            previewContent = '';
+
+            for (var i in data.images) {
+                var image = data.images[i];
+                previewContent += '<img src="' + image + '" style="width: 100%" /><br/>';
+            }
+
+            $('#wl_preview').html(previewContent);
+        });
+    }
+
     return {
         init: function () {
             editor = ace.edit('editor');
@@ -13,7 +34,7 @@ var Editor = (function() {
             }
         },
 
-        save: function () {
+        save: function (callback) {
             var document = {
                 tex: editor.getValue(),
                 title: $('#document-title').val()
@@ -37,12 +58,17 @@ var Editor = (function() {
                 if (data.id) {
                     documentId = data.id;
                 }
+
+                if (callback) {
+                    callback();
+                }
             }).fail(function() {
                 this.progress('Failed to save!');
             });
         },
 
         saveAndPreview: function () {
+            this.save(generateDocument);
         },
 
         progress: function(message) {
