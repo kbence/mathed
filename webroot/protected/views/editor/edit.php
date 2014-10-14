@@ -27,7 +27,6 @@ Title: <input type="text" id="document-title" size="64" value="<?php echo $docum
     <div id="wl_divider" onMouseMove="moveDivider()" onmousedown="moveDividerClick()"
          onmouseup="moveDividerOut()"></div>
     <div id="wl_preview">
-        <img src="/images/bear.jpg" alt="bear" style="width:100%"/>
     </div>
 </div>
 
