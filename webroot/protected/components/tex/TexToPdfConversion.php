@@ -11,12 +11,12 @@ class TexToPdfConversion extends Conversion
 
     public function getDefaultInputExtension()
     {
-        return '.tex';
+        return self::INPUT_SUFFIX;
     }
 
     public function getDefaultOutputExtension()
     {
-        return '.pdf';
+        return self::OUTPUT_SUFFIX;
     }
 
     protected function convertFile($file)
