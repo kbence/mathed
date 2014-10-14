@@ -17,8 +17,8 @@ class PdfToPngConversion extends Conversion
         $tempDir = $this->createTempDirectory();
 
         $result = $this->execute(array('cwd' => $tempDir),
-            'convert', $file, '-density', '300', '-background', 'white',
-            '-alpha', 'off', 'target.png');
+            'convert', '-density', '300', $file, '-background', 'white',
+            '-alpha', 'off', '-resize', '50%', 'target.png');
 
         if ($result['status'] == 'OK') {
             if ($result['exitcode'] == 0) {
