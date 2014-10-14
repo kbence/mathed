@@ -60,8 +60,9 @@ class AjaxController extends Controller
     public function actionGetImage()
     {
         $documentId = $this->getRequest()->getParam('id');
+        $part = $this->getRequest()->getParam('part', 0);
         $cache = new DocumentCache($this->getDatabase());
-        $content = $cache->getPngImage($documentId);
+        $content = $cache->getPngImage($documentId, $part);
 
         header('Content-Type: image/png');
         echo $content;
