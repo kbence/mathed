@@ -4,9 +4,9 @@ $this->pageTitle = Yii::app()->name;
 /* @var CClientScript $clientScript */
 $clientScript = Yii::app()->clientScript;
 $clientScript->registerCoreScript('jquery');
-$clientScript->registerScriptFile('/js/default.js');
+$clientScript->registerScriptFile('/js/divider.js');
 $clientScript->registerScriptFile('/js/editor.js', CClientScript::POS_END);
-$clientScript->registerCssFile('/css/default.css');
+$clientScript->registerCssFile('/css/divider.css');
 $clientScript->registerCssFile('/css/editor.css');
 ?>
 <script language="javascript">
