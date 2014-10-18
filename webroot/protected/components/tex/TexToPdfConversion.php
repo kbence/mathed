@@ -26,7 +26,7 @@ class TexToPdfConversion extends Conversion
         $texDir = dirname($file);
         $texBasename = basename($file, self::INPUT_SUFFIX);
 
-        $result = $this->execute(array('cwd' => $texDir, 'timeout' => 5),
+        $result = $this->execute(array('cwd' => $texDir, 'timeout' => 15),
             'pdflatex', '-interaction', 'nonstopmode', $texBasename . self::INPUT_SUFFIX);
 
         if ($result['status'] == 'OK') {
