@@ -20,6 +20,13 @@ Editor
 <button onclick="Editor.saveAndPreview()">Save & preview</button>
 <span id="progress-text"></span><br/>
 Title: <input type="text" id="document-title" size="64" value="<?php echo $document['title'] ?>"/>
+
+<div id="toolbar">
+    <div class="button button-bold"><span>B</span></div>
+    <div class="button button-italic"><span>I</span></div>
+    <div class="button button-underlined"><span>U</span></div>
+</div>
+
 <div id="wl_document" onMouseUp="moveDividerOut()">
     <div id="wl_editor">
         <pre id="editor"><?php echo $document['content'] ?></pre>

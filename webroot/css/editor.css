@@ -1,4 +1,64 @@
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+
 #editor {
-	margin: 0;
-        height: 400px;
+    margin: 0;
+    height: 400px;
 }
+
+#toolbar {
+    margin: 5px 0;
+    cursor: default;
+}
+
+#toolbar .button {
+    font-family: "Droid Serif";
+    font-size: 12pt;
+    width: 24px;
+    height: 22px;
+    padding-top: 2px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: #c0a886;
+    border-width: 1px 0 0 1px;
+    box-shadow: 1px 1px 2px black;
+
+    background: #fff9db; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fff9db 0%, #e2d89c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff9db), color-stop(100%,#e2d89c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fff9db 0%,#e2d89c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff9db', endColorstr='#e2d89c',GradientType=0 ); /* IE6-9 */
+
+}
+
+#toolbar .button:hover {
+    background: #fffbed; /* Old browsers */
+    background: -moz-linear-gradient(top, #fffbed 0%, #ddd7b8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fffbed), color-stop(100%,#ddd7b8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fffbed 0%,#ddd7b8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffbed', endColorstr='#ddd7b8',GradientType=0 ); /* IE6-9 */
+}
+
+#toolbar .button span {
+    vertical-align: middle;
+}
+
+#toolbar .button.pressed {
+    box-shadow: -1px -1px 2px black;
+    border-style: solid;
+    border-color: #c0a886;
+    border-width: 0 1px 1px 0;
+}
+
+.button-bold            { font-weight: bold; }
+.button-italic          { font-style: italic; }
+.button-underlined      { text-decoration: underline; }
