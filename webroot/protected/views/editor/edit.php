@@ -9,23 +9,70 @@ $clientScript->registerScriptFile('/js/editor.js', CClientScript::POS_END);
 $clientScript->registerCssFile('/css/divider.css');
 $clientScript->registerCssFile('/css/editor.css');
 ?>
+
 <script language="javascript">
+
     <!--
     var currentDocumentId = <?php echo $document['id'] ?>;
+	
+	$(document).ready(function(){
+		$(".button-comparsion span").click(function(){
+			var button_comparsion_position = $(".button-comparsion").position();		
+			$(".comparsion").css("visibility","visible"); 
+			$(".comparsion").css("top",button_comparsion_position.top+30+"px");	
+			$(".comparsion").css("left",button_comparsion_position.left+"px");			
+		});
+		$(".button-leq span").click(function(){
+			//Editor.setTheme();
+			editor.setTheme("ace/theme/twilight"');
+			$("#editor").ace({ theme: 'twilight', lang: 'ruby' });
+			$(".comparsion").css("visibility","hidden"); 
+		});
+	});
     // -->
 </script>
 
 Editor
+
+<div id="toolbar">
+    <div class="button button-comparsion"><span>&nbsp;</span></div>
+    <div class="button button-whitespaces"><span>&nbsp;</span></div>
+    <div class="button button-accents"><span>&nbsp;</span></div>
+	<div class="button button-binaryopeators"><span>&nbsp;</span></div>
+    <div class="button button-arrows"><span>&nbsp;</span></div>
+    <div class="button button-comparsion2"><span>&nbsp;</span></div>
+	<div class="button button-sets"><span>&nbsp;</span></div>
+    <div class="button button-diversesimbols"><span>&nbsp;</span></div>
+    <div class="button button-greeksmall"><span>&nbsp;</span></div>
+    <div class="button button-greeklarge"><span>&nbsp;</span></div>
+	<div class="button button-boundaries"><span>&nbsp;</span></div>
+    <div class="button button-mathematicalconstructions"><span>&nbsp;</span></div>
+    <div class="button button-subscript"><span>&nbsp;</span></div>
+    <div class="button button-operators"><span>&nbsp;</span></div>
+    <div class="button button-abobebelow"><span>&nbsp;</span></div>		
+	<div class="button button-arrowwithcaption"><span>&nbsp;</span></div>
+
+	<div class="comparsion">
+		<div class="button button-leq"><span>&nbsp;</span></div>
+		<div class="button button-geq"><span>&nbsp;</span></div>
+		<div class="button button-prec"><span>&nbsp;</span></div>
+		<div class="button button-succ"><span>&nbsp;</span></div>
+		<div class="button button-triangleleft"><span>&nbsp;</span></div>
+		<div class="button button-triangleright"><span>&nbsp;</span></div>
+		<div class="button button-neq"><span>&nbsp;</span></div>
+		<div class="button button-equiv"><span>&nbsp;</span></div>
+		<div class="button button-approx"><span>&nbsp;</span></div>
+		<div class="button button-cong"><span>&nbsp;</span></div>
+		<div class="button button-propto"><span>&nbsp;</span></div>		
+	</div>
+	
+</div>
+Title: <input type="text" id="document-title" size="64" value="<?php echo $document['title'] ?>"/>
+
 <button onclick="Editor.save()">Save</button>
 <button onclick="Editor.saveAndPreview()">Save & preview</button>
 <span id="progress-text"></span><br/>
-Title: <input type="text" id="document-title" size="64" value="<?php echo $document['title'] ?>"/>
 
-<div id="toolbar">
-    <div class="button button-bold"><span>&nbsp;</span></div>
-    <div class="button button-italic"><span>&nbsp;</span></div>
-    <div class="button button-underlined"><span>&nbsp;</span></div>
-</div>
 
 <div id="wl_document" onMouseUp="moveDividerOut()">
     <div id="wl_editor">

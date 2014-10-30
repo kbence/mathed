@@ -51,13 +51,44 @@
     background-image: url('../images/editor/toolbaricons.png');
 }
 
-#toolbar .button.pressed {
+#toolbar.button.pressed {
     box-shadow: -1px -1px 2px black;
     border-style: solid;
     border-color: #c0a886;
     border-width: 0 1px 1px 0;
 }
 
-.button-bold span       { background-position: 0 0; }
-.button-italic span     { background-position: -24px 0; }
-.button-underlined span { background-position: -48px 0; }
+.comparsion {
+    position: absolute;
+	z-index: 1000;
+    visibility: hidden;
+}
+
+.button-comparsion span       { background-position: 0 0; }
+.button-whitespaces span     { background-position: -24px 0; }
+.button-accents span { background-position: -48px 0; }
+.button-binaryopeators span { background-position: -72px 0; }
+.button-arrows span { background-position: -96px 0; }
+.button-comparsion2 span { background-position: -120px 0; }
+.button-sets span { background-position: -144px 0; }
+.button-diversesimbols span { background-position: -168px 0; }
+.button-greeksmall span { background-position: -192px 0; }
+.button-greeklarge span { background-position: -216px 0; }
+.button-boundaries span { background-position: -240px 0; }
+.button-mathematicalconstructions span { background-position: -264px 0; }
+.button-subscript span { background-position: -288px 0; }
+.button-operators span { background-position: -312px 0; }
+.button-abobebelow span { background-position: -336px 0; }
+.button-arrowwithcaption span { background-position: -360px 0; }
+
+.button-leq span       { background-position: 0 -24px; }
+.button-geq span     { background-position: -24px -24px; }
+.button-prec span { background-position: -48px -24px; }
+.button-succ span { background-position: -72px -24px; }
+.button-triangleleft span { background-position: -96px -24px; }
+.button-triangleright span { background-position: -120px -24px; }
+.button-neq span { background-position: -144px -24px; }
+.button-equiv span { background-position: -168px -24px; }
+.button-approx span { background-position: -192px -24px; }
+.button-cong span { background-position: -216px -24px; }
+.button-propto span { background-position: -240px -24px; }
