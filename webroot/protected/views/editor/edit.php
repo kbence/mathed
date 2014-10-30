@@ -24,8 +24,8 @@ $clientScript->registerCssFile('/css/editor.css');
 		});
 		$(".button-leq span").click(function(){
 			//Editor.setTheme();
-			editor.setTheme("ace/theme/twilight"');
-			$("#editor").ace({ theme: 'twilight', lang: 'ruby' });
+			//editor.setTheme("ace/theme/twilight"');
+			//$("#editor").ace({ theme: 'twilight', lang: 'ruby' });
 			$(".comparsion").css("visibility","hidden"); 
 		});
 	});
