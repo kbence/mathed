@@ -81,6 +81,7 @@ var Editor = (function() {
 
         insert: function (insert_string) {
             editor.insert(insert_string);
+            editor.focus();
         }
     }
 	
