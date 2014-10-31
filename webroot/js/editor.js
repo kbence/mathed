@@ -78,11 +78,10 @@ var Editor = (function() {
         saveAndPreview: function () {
             this.save(generateDocument);
         },
-		
+
         insert: function (insert_string) {
             editor.insert(insert_string);
-        },		
-		
+        }
     }
 	
 })();
