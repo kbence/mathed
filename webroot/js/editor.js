@@ -22,7 +22,7 @@ var Editor = (function() {
 
             previewContent = '';
 
-            for (var i in data.images) {
+            for (var i = 0; i < data.images.length; i++) {
                 var image = data.images[i];
                 previewContent += '<img src="' + image + '" style="width: 100%" /><br/>';
             }
