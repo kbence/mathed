@@ -80,7 +80,18 @@ var Editor = (function() {
         },
 
         insert: function (insert_string) {
-            editor.insert(insert_string);
+            var session = editor.getSession();
+            var selection = editor.getSelection();
+            var selectionRange = editor.getSelectionRange();
+            var selectedText = session.getTextRange();
+            var insertedText = insert_string.split('$').join(selectedText);
+
+            editor.insert(insertedText);
+
+            selectionRange.begin.column = 0;
+            selectionRange.end.column = selectionRange.start.column + insertedText.length;
+            editor.setSelectionRange(selectionRange);
+
             editor.focus();
         }
     }

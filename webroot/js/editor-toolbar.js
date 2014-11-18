@@ -1,56 +1,97 @@
 var EditorToolbar = (function() {
+    var BUTTON_WIDTH = 24;
+    var BUTTON_HEIGHT = 24;
+    var TOOLBAR_ICONS = {
+        "equation": {
+            "leq": "\\leq",
+            "geq": "\\geq",
+            "prec": "\\prec",
+            "succ": "\\succ",
+            "triangleleft": "\\triangleleft",
+            "triangleright": "\\triangleright",
+            "neq": "\\neq",
+            "equiv": "\\equiv",
+            "approx": "\\approx",
+            "cong": "\\cong",
+            "propto": "\\propto"
+        },
+        "whitespace": {
+            "n3mu": "\\!",
+            "3mu": "\\,",
+            "4mu": "\\:",
+            "5mu": "\\;",
+            "space": "\\ ",
+            "ldots": "\\ldots",
+            "cdots": "\\cdots",
+            "vdots": "\\vdots",
+            "ddots": "\\ddots"
+        },
+        "accent": {
+            "hat": "\\hat{$}",
+            "check": "\\check{$}",
+            "brave": "\\brave{$}",
+            "acute": "\\acute{$}",
+            "grave": "\\grave{$}"
+        }
+    };
+
+    function createDiv() {
+        return $('<div></div>');
+    }
+
+    function createButton(group, name, bgX, bgY) {
+        var button = $('<div><span></span></div>')
+        button.addClass('button button-' + group + '-' + name);
+        button.find('span').css('background-position', (-bgX * BUTTON_WIDTH) + 'px ' + (-bgY * BUTTON_HEIGHT) + 'px');
+        button.css('visibility', 'none');
+
+        return button;
+    }
+
     return {
         init: function() {
-            $(".button-comparsion span").click(function(){
-                var button_comparsion_position = $(".button-comparsion").position();
-                $(".comparsion").css("visibility","visible");
-                $(".comparsion").css("top",button_comparsion_position.top+30+"px");
-                $(".comparsion").css("left",button_comparsion_position.left+"px");
+            var rootDiv = createDiv();
+            var groupButtonDiv = createDiv();
+            var row = 1;
+
+            groupButtonDiv.addClass('group-buttons');
+            rootDiv.append(groupButtonDiv);
+
+            $.each(TOOLBAR_ICONS, function(group, items) {
+                var groupDiv = createDiv();
+                var groupButton = createButton('group', group, row - 1, 0);
+                var col = 0;
+
+                groupButton.click(function() {
+                    rootDiv.find('.group').hide();
+                    rootDiv.find('.group-' + group).show();
+                    groupButtonDiv.find('.button').removeClass('pressed');
+                    groupButton.addClass('pressed');
+                });
+
+                groupDiv.addClass('group group-' + group);
+
+                $.each(items, function(name, item) {
+                    var button = createButton(group, name, col++, row);
+
+                    button.click(function() {
+                        Editor.insert(item);
+                    });
+
+                    groupDiv.append(button);
+                });
+
+                groupButtonDiv.append(groupButton);
+                rootDiv.append(groupDiv);
+                row++;
             });
-            $(".button-leq span").click(function(){
-                Editor.insert("\\leq");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-geq span").click(function(){
-                Editor.insert("\\geq");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-prec span").click(function(){
-                Editor.insert("\\prec");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-succ span").click(function(){
-                Editor.insert("\\succ");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-triangleleft span").click(function(){
-                Editor.insert("\\triangleleft");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-triangleright span").click(function(){
-                Editor.insert("\\triangleright");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-neq span").click(function(){
-                Editor.insert("\\neq");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-equiv span").click(function(){
-                Editor.insert("\\equiv");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-approx span").click(function(){
-                Editor.insert("\\approx");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-cong span").click(function(){
-                Editor.insert("\\cong");
-                $(".comparsion").css("visibility","hidden");
-            });
-            $(".button-propto span").click(function(){
-                Editor.insert("\\propto");
-                $(".comparsion").css("visibility","hidden");
-            });
+
+            rootDiv.find('.group').hide();
+            rootDiv.find('.group').first().show();
+            groupButtonDiv.find('.button').first().addClass('pressed');
+
+            $('#toolbar').html("");
+            $('#toolbar').append(rootDiv);
         }
     };
 })();
