@@ -1,6 +1,6 @@
 <?php
 
-class EditorController extends Controller
+class EditorController extends AuthController
 {
     public function actions()
     {
