@@ -10,8 +10,6 @@
         "recipe[tex::latex-extra]",
         "recipe[php]",
         "recipe[php::mysql]",
-        "recipe[php::phpunit]",
-        "recipe[php::phing]",
         "recipe[imagemagick]",
         "recipe[sites::mathed]",
         "recipe[apache2::reload]"
