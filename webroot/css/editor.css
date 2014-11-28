@@ -5,7 +5,10 @@
 
 #toolbar {
     margin: 5px 0;
+    padding: 3px;
     cursor: default;
+    background: #fff5e1;
+    border-radius: 5px;
 }
 
 #toolbar .button {
@@ -15,32 +18,26 @@
     display: inline-block;
     text-align: center;
     position: relative;
-    border-radius: 3px;
+    background: #fff5e1;
+
+    border-color: #fff5e1;
+    border-width: 1px;
     border-style: solid;
-    border-color: #c0a886;
-    border-width: 1px 0 0 1px;
-    box-shadow: 1px 1px 2px black;
+    border-radius: 3px;
+}
 
-    background: #fff9db; /* Old browsers */
-    background: -moz-linear-gradient(top,  #fff9db 0%, #e2d89c 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff9db), color-stop(100%,#e2d89c)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #fff9db 0%,#e2d89c 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #fff9db 0%,#e2d89c 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff9db', endColorstr='#e2d89c',GradientType=0 ); /* IE6-9 */
+#toolbar .group .button {
+    background: #fff5e1;
+}
 
+#toolbar .group .button:hover {
+    border-color: #efe6d3 #989189 #989189 #efe6d3;
+    background: linear-gradient(to bottom, #fff5e1, #d3cab8)
 }
 
 #toolbar .button:hover {
-    background: #fffbed; /* Old browsers */
-    background: -moz-linear-gradient(top, #fffbed 0%, #ddd7b8 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fffbed), color-stop(100%,#ddd7b8)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #fffbed 0%,#ddd7b8 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #fffbed 0%,#ddd7b8 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffbed', endColorstr='#ddd7b8',GradientType=0 ); /* IE6-9 */
+    border-color: #efe6d3 #989189 #989189 #efe6d3;
+    background: linear-gradient(to bottom, #fff5e1, #d3cab8)
 }
 
 #toolbar .button span {
@@ -51,12 +48,9 @@
     background-image: url('../images/editor/toolbaricons.png');
 }
 
-#toolbar .button.pressed,
-#toolbar .group-button.pressed {
-    box-shadow: -1px -1px 2px black;
-    border-style: solid;
-    border-color: #c0a886;
-    border-width: 0 1px 1px 0;
+#toolbar .button.pressed {
+    border-color: #989189 #efe6d3 #efe6d3 #989189;
+    background: linear-gradient(to bottom, #d3cab8, #fff5e1)
 }
 
 .comparsion {
