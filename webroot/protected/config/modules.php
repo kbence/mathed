@@ -6,7 +6,7 @@ return array(
         'commentableModels'=>array(
             'document'=>'DocumentModel'
         ),
-        'userModelClass'=>'UserModel',
+        'userModelClass'=>'User',
         'userNameAttribute'=>'name',
     )
 );

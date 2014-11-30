@@ -8,6 +8,7 @@
 class RegisterForm extends CFormModel
 {
 	public $username;
+	public $email;
 	public $password;
 	public $passwordRepeated;
 
@@ -20,7 +21,8 @@ class RegisterForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password, passwordRepeated', 'required'),
+			array('username, email, password, passwordRepeated', 'required'),
+			array('email', 'email'),
 			array('password, passwordRepeated', 'length', 'min' => 6),
 			array('passwordRepeated', 'compare', 'compareAttribute' => 'password')
 		);
@@ -33,14 +35,12 @@ class RegisterForm extends CFormModel
 	 */
 	public function register()
 	{
-		$user = new User(Yii::app()->db);
-
-		if ($user->existsWithName($this->username)) {
+		if (User::existsWithName($this->username)) {
 			$this->addError('username', 'Username has already been taken!');
 			return false;
 		}
 
-		$success = $user->create($this->username, $this->password);
+		$success = User::create($this->username, $this->email, $this->password);
 
 		if (!$success) {
 			$this->addError('username', 'Registration failed!');
