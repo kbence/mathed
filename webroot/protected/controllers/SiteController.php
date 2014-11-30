@@ -80,4 +80,27 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionRegister()
+	{
+		$model = new RegisterForm();
+
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'register-form') {
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		if (isset($_POST['RegisterForm'])) {
+			$model->attributes = $_POST['RegisterForm'];
+
+			if ($model->validate()) {
+				if ($model->register()) {
+					$this->redirect(Yii::app()->createUrl('editor'));
+					Yii::app()->end();
+				}
+			}
+		}
+
+		$this->render('register', array('model' => $model));
+	}
 }
