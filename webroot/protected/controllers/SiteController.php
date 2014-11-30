@@ -95,7 +95,7 @@ class SiteController extends Controller
 
 			if ($model->validate()) {
 				if ($model->register()) {
-					$this->redirect(Yii::app()->createUrl('editor'));
+					$this->redirect(Yii::app()->createUrl('site/login'));
 					Yii::app()->end();
 				}
 			}
