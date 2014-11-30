@@ -35,4 +35,6 @@ Title: <input type="text" id="document-title" size="64" value="<?php echo $docum
     </div>
 </div>
 
+<?php $this->renderPartial('comment.views.comment.commentList', array('model' => $model)) ?>
+
 

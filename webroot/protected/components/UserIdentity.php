@@ -7,7 +7,15 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	/**
+    private $id;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
 	 * are both 'demo'.
@@ -17,7 +25,10 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		if($this->getUser($this->username, $this->password))
+        $userData = $this->getUser($this->username, $this->password);
+        $this->id = $userData['id'];
+
+        if ($userData)
 			$this->errorCode = self::ERROR_NONE;
 		else
             $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;

@@ -45,8 +45,12 @@ class EditorController extends AuthController
         $cs->registerScriptFile($baseUrl . '/js/ace-builds/src-noconflict/ace.js',
             CClientScript::POS_END);
 
+        $documentModel = new DocumentModel($documentId);
+        $documentModel->id = $documentId;
+
         $this->render('edit', array(
-            'document' => $doc
+            'document' => $doc,
+            'model' => $documentModel
         ));
     }
 }
