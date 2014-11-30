@@ -7,10 +7,6 @@ class UserModel extends CActiveRecord
     public $password;
     public $email;
 
-    function __construct()
-    {
-    }
-
     public function tableName()
     {
         return 'user';
