@@ -1,6 +1,6 @@
 <?php
 
-class DocumentModel extends CActiveRecord
+class Document extends CActiveRecord
 {
     public static function model($className = __CLASS__)
     {
@@ -25,7 +25,7 @@ class DocumentModel extends CActiveRecord
 
     public static function create()
     {
-        $document = new DocumentModel();
+        $document = new Document();
         $document->title = 'Untitled document';
         $document->content = self::loadTemplate('article');
         $document->owner = Yii::app()->user->id;

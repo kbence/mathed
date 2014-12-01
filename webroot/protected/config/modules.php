@@ -4,7 +4,7 @@ return array(
     'comment' => array(
         'class'=>'ext.comment-module.CommentModule',
         'commentableModels'=>array(
-            'document'=>'DocumentModel'
+            'document'=>'Document'
         ),
         'userModelClass'=>'User',
         'userNameAttribute'=>'name',

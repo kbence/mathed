@@ -9,9 +9,9 @@ class AjaxController extends AuthController
         $title = $this->getRequest()->getParam('title');
 
         if ($documentId == -1) {
-            $document = new DocumentModel();
+            $document = new Document();
         } else {
-            $document = DocumentModel::model()->findByPk($documentId);
+            $document = Document::model()->findByPk($documentId);
         }
 
         $result = array();

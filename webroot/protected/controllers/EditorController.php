@@ -14,13 +14,13 @@ class EditorController extends AuthController
     public function actionIndex()
     {
         $this->render('index', array(
-            'documents' => DocumentModel::model()->findAll()
+            'documents' => Document::model()->findAll()
         ));
     }
 
     public function actionNew()
     {
-        $documentId = DocumentModel::create();
+        $documentId = Document::create();
         $this->redirect($this->createUrl('edit', array('id' => $documentId)));
     }
 
@@ -34,7 +34,7 @@ class EditorController extends AuthController
             CClientScript::POS_END);
 
         $documentId = $this->getRequest()->getParam('id');
-        $document = DocumentModel::model()->findByPk($documentId);
+        $document = Document::model()->findByPk($documentId);
 
         $this->render('edit', array('model' => $document));
     }
