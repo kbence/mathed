@@ -2,10 +2,6 @@
 
 class AjaxController extends AuthController
 {
-//    public function actions()
-//    {
-//    }
-
     public function actionSaveDocument()
     {
         $documentId = $this->getRequest()->getParam('id', -1);

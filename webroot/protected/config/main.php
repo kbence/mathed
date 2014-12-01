@@ -72,5 +72,8 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
+		'document' => array(
+			'templateDir' => realpath(dirname(__FILE__) . '/../data/templates')
+		)
 	),
 );

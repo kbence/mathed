@@ -23,12 +23,7 @@ class EditorController extends AuthController
 
     public function actionNew()
     {
-        $templateDir = dirname(__FILE__) . '/../data/templates';
-
-        $fileUtil = new FileUtil();
-        $document = new Document($this->getDatabase());
-        $documentId = $document->saveNew('Untitled document', $fileUtil->getContents($templateDir . '/article.tex'));
-
+        $documentId = DocumentModel::create();
         $this->redirect($this->createUrl('edit', array('id' => $documentId)));
     }
 
