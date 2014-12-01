@@ -11,8 +11,8 @@ $clientScript->registerCoreScript('jquery');
 <table>
     <?php foreach ($documents as $doc): ?>
         <tr>
-            <td><?php echo $doc['title'] ?></td>
-            <td><a href="?r=editor/edit&amp;id=<?php echo $doc['id'] ?>">Edit</a></td>
+            <td><?php echo $doc->title ?></td>
+            <td><a href="?r=editor/edit&amp;id=<?php echo $doc->id ?>">Edit</a></td>
         </tr>
     <?php endforeach ?>
 </table>

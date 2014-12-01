@@ -5,20 +5,29 @@ class AjaxController extends AuthController
     public function actionSaveDocument()
     {
         $documentId = $this->getRequest()->getParam('id', -1);
-        $source = $this->getRequest()->getParam('tex');
+        $content = $this->getRequest()->getParam('tex');
         $title = $this->getRequest()->getParam('title');
 
-        $document = new Document($this->getDatabase());
+        if ($documentId == -1) {
+            $document = new DocumentModel();
+        } else {
+            $document = DocumentModel::model()->findByPk($documentId);
+        }
+
         $result = array();
 
-        if ($documentId == -1) {
-            $newId = $document->saveNew($title, $source);
-            $result['status'] = 'OK';
-            $result['id'] = $newId;
-        } else {
-            $document->save($documentId, $title, $source);
-            $result['status'] = 'OK';
+        if ($document) {
+            $document->id = $documentId;
+            $document->title = $title;
+            $document->content = $content;
+
+            if ($document->save()) {
+                $result['status'] = 'OK';
+            } else {
+                $result['status'] = 'Error';
+            }
         }
+
         echo json_encode($result);
     }
 

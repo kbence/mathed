@@ -13,11 +13,11 @@ $clientScript->registerCssFile('/css/editor.css');
 
 <script language="javascript">
 <!--
-    var currentDocumentId = <?php echo $document['id'] ?>;
+    var currentDocumentId = <?php echo $model->id ?>;
 // -->
 </script>
 
-Title: <input type="text" id="document-title" size="64" value="<?php echo $document['title'] ?>"/>
+Title: <input type="text" id="document-title" size="64" value="<?php echo $model->title ?>"/>
 
 <button onclick="Editor.save()">Save</button>
 <button onclick="Editor.saveAndPreview()">Save & preview</button>
@@ -27,7 +27,7 @@ Title: <input type="text" id="document-title" size="64" value="<?php echo $docum
 
 <div id="wl_document" onMouseUp="moveDividerOut()">
     <div id="wl_editor">
-        <pre id="editor"><?php echo $document['content'] ?></pre>
+        <pre id="editor"><?php echo $model->content ?></pre>
     </div>
     <div id="wl_divider" onMouseMove="moveDivider()" onmousedown="moveDividerClick()"
          onmouseup="moveDividerOut()"></div>

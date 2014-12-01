@@ -13,11 +13,8 @@ class EditorController extends AuthController
 
     public function actionIndex()
     {
-        $document = new Document($this->getDatabase());
-        $docs = $document->listDocuments();
-
         $this->render('index', array(
-            'documents' => $docs
+            'documents' => DocumentModel::model()->findAll()
         ));
     }
 
@@ -30,22 +27,15 @@ class EditorController extends AuthController
     public function actionEdit()
     {
         /** @var CClientScript $cs */
-        $documentId = $this->getRequest()->getParam('id');
-        $document = new Document($this->getDatabase());
-        $doc = $document->load($documentId);
-
         $baseUrl = Yii::app()->request->baseUrl;
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript('jquery');
         $cs->registerScriptFile($baseUrl . '/js/ace-builds/src-noconflict/ace.js',
             CClientScript::POS_END);
 
-        $documentModel = new DocumentModel($documentId);
-        $documentModel->id = $documentId;
+        $documentId = $this->getRequest()->getParam('id');
+        $document = DocumentModel::model()->findByPk($documentId);
 
-        $this->render('edit', array(
-            'document' => $doc,
-            'model' => $documentModel
-        ));
+        $this->render('edit', array('model' => $document));
     }
 }
