@@ -13,8 +13,10 @@ class EditorController extends AuthController
 
     public function actionIndex()
     {
+        $userId = Yii::app()->user->id;
+
         $this->render('index', array(
-            'documents' => Document::model()->findAll()
+            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId))
         ));
     }
 
