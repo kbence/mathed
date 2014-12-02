@@ -1,0 +1,18 @@
+{
+    "name": "web",
+    "description": "Web server role",
+    "chef_type": "node",
+    "json_class": "Chef::Node",
+    "run_list": [
+        "recipe[apt]",
+        "recipe[apache2]",
+        "recipe[database::mysql]",
+        "recipe[tex]",
+        "recipe[tex::latex-extra]",
+        "recipe[php]",
+        "recipe[php::mysql]",
+        "recipe[imagemagick]",
+        "recipe[sites::mathed-prod]",
+        "recipe[apache2::reload]"
+    ]
+}
