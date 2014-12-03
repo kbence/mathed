@@ -3,8 +3,8 @@ define :apache_vhost, :action => :create, :host => nil, :public_root => nil do
   raise "Missing host for apache_vhost!" if params[:host].nil?
   raise "Missing public_root for apache_vhost!" if params[:public_root].nil?
 
-  vhost_file = "/etc/apache2/sites-available/#{params[:host]}"
-  vhost_link = "/etc/apache2/sites-enabled/#{params[:host]}"
+  vhost_file = "/etc/apache2/sites-available/#{params[:host]}.conf"
+  vhost_link = "/etc/apache2/sites-enabled/#{params[:host]}.conf"
 
   template vhost_file do
     cookbook 'apache2'
