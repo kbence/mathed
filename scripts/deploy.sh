@@ -10,3 +10,5 @@ mkdir -p $TARGET_DIR
 (cd $TARGET_DIR && tar xfj $PACKAGE)
 
 chef-solo --no-color -c /home/ubuntu/chef/solo.rb
+
+rm -rf $TEMP_DIR
