@@ -7,7 +7,7 @@ PACKAGE=$TEMP_DIR/mathed.tar.bz2
 wget http://jenkins.kiglics.hu/job/mathed-build/lastSuccessfulBuild/artifact/build/mathed.tar.bz2 -O $PACKAGE
 
 mkdir -p $TARGET_DIR
-(cd $TARGET_DIR && tar xfjv $PACKAGE)
+(cd $TARGET_DIR && tar xfjv $PACKAGE && chown www-data.www-data -R $TARGET_DIR)
 
 chef-solo --no-color -c /home/ubuntu/chef/solo.rb
 
