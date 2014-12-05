@@ -14,11 +14,41 @@ h1 {
 }
 </style>
 
-<H1 align="center"> Matematikai szerkesztő portál</H1>
+<H1 align="center">Portál bemutatása</H1>
 
 <div id="index_style">
 	<p align="justify">
-		<?php print "Ezen portál célja olyan weboldal megalkotása, mely matematikai dokumentumok elkészítését támogatja és segít ezek közös felületen való kezelésében, megosztásában. A portál konkrét felhasználói igények alapján hiányt pótol. Tapasztalat szerint kevés olyan, jól működő weboldal létezik, melynek segítségével egy könnyen kezelhető szerkesztő felületen bevitt matematikai képleteket is tartalmazó TeX, vagy MathML kód alapján azonnal képet kaphatunk a lefordított forrásról. Az editor \"What You See Is What You Get\" (WYSIWYG) elvhez hasonló (fordítás időigényessége miatt nem valós idejű megjelenítés) módon működik. Lehetőség van az elkészült dokumentumoknak a felhasználó szintű kezelésére, jogok hozzárendelésével. Megosztott dokumentum esetén lehetőség van fórum topic hozzárendelésére, ahol a dokumentum készítője és bármely felhasználó, akinek van jogosultsága látni az adott forráskódot, kommenteket tud hozzáfűzni. ";?>
+		<?php print 
+"Regisztráció\n
+A felület lehetőséget ad új felhasználóként regisztrálni a rendszerbe.\n
+Ehhez felhasználó nevet, emailcímet, valamint jelszót kell megadni, majd a “Register” gombra kattintva a felhasználói profil létrejön a rendszerben.\n
+\n
+\n
+Login\n
+\n
+A Login felület a felhasználók beléptetését szolgálja a rendszerbe.\n
+    Csak előzetesen regisztrált felhasználóknak van módja a MathEd rendszerbe belépni, a regisztráció során megadott felhasználónév-jelszó párossal. \n
+\n
+A rendszer jelzi, ha a felhasználónév, vagy a jelszó nem megfelelő.\n
+\n
+\n
+Editor\n
+Dokumentumtár\n
+    A Dokumentumtár lehetőséget ad a korábban eltárolt dokumentumok megnyitására -a kiválasztott dokumentummal egy sorban lévő “Edit” gomb segítségével-, valamint új dokumentum hozzáadására, a “Create new” gomb segítségével. A rendszerbe belépett felhasználó csak az általa létrehozott dokumentumokat látja megjelenni a listában.\n
+\n
+Szerkesztő felület\n
+A szerkesztő ablak három fő részre oszlik. \n
+Bal oldalon, zölddel jelölten maga a forráskód bevitelére, szerkesztésére szolgáló felület található.\n
+Jobb oldalon, pirossal keretezve az előnézet helyezkedik el.\n
+Az sárgával jelölt területen a kommentálásra szolgáló beviteli mező, valamint a korábbi kommentek megjelenítésére szolgáló felület helyezkedik el.\n
+\n    
+\nElőnézet
+\nA dokumentum előnézetét az Editor ablak felső részén elhelyezkedő “Save & Preview” gomb segítségével lehet frissíteni. Ekkor a rendszer a forráskód változásait is menti.
+\n
+\n
+Comment felület\n
+A kommentek írására, megjelenítésére szolgáló eszköz a felhasználóknak nyújthat segítséget azzal, hogy a megosztott dokumentumok készítése során egymás munkáját interaktívan tudják segíteni. A felület alsó részén szövegbeviteli mezőbe írható egy új komment, feljebb a korábbi megjegyzések olvashatók, időbélyegzővel, valamint a kommentelő felhasználónevével ellátva.\n"
+		?>
 	</p>
 </div>
 
