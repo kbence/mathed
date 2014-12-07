@@ -17,7 +17,7 @@ class EditorController extends AuthController
 
         $this->render('index', array(
             'documents' => Document::model()->findAllByAttributes(array('owner' => $userId)),
-            'shared_documents' => Document::model()->findAllByAttributes(array('shared' => $userId))
+            'shared_documents' => Document::model()->findAllByAttributes(array('shared' => 1))
         ));
     }
 
