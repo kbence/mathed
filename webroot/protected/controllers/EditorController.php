@@ -48,6 +48,25 @@ class EditorController extends AuthController
 
     public function actionView()
     {
-        $this->render('view');
+        $documentId = $this->getRequest()->getParam('id');
+        $document = Document::model()->findByPk($documentId);
+
+        if ($document) {
+            $cache = new DocumentCache($this->getDatabase());
+            $imageCount = $cache->getPngImageCount($documentId);
+            $links = array();
+
+            for ($image = 0; $image < $imageCount; $image++) {
+                $links[] = $this->createUrl('ajax/getImage', array(
+                    'id' => $documentId,
+                    'part' => $image,
+                    'random' => microtime(true)
+                ));
+            }
+
+            $this->render('view', array('title' => $document->title, 'links' => $links));
+        } else {
+            $this->render('unauthorized');
+        }
     }
 }
