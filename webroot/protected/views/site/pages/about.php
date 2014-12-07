@@ -20,18 +20,17 @@ h1 {
 	<p align="justify">
 		 
 <?php print 
-"Regisztráció<br>
+"<u>Regisztráció</u><br>
 <br>
 A felület lehetőséget ad új felhasználóként regisztrálni a rendszerbe. Ehhez felhasználó nevet, emailcímet, valamint jelszót kell megadni, majd a “Register” gombra kattintva a felhasználói profil létrejön a rendszerben.<br>
-<br>
-<br>"?>
+"?>
 
 <p align="center">
 	<img src="/images/about_1.jpg" alt="" >
 </p>
 
 <?php print
-"Login<br>
+"<u>Login</u><br>
 <br>
 A Login felület a felhasználók beléptetését szolgálja a rendszerbe. Csak előzetesen regisztrált felhasználóknak van módja a MathEd rendszerbe belépni, a regisztráció során megadott felhasználónév-jelszó párossal. <br>
 <br>";?>
@@ -39,8 +38,9 @@ A Login felület a felhasználók beléptetését szolgálja a rendszerbe. Csak 
 	<img src="/images/about_2.jpg" alt="" >
 </p>
 <?php print"
-A rendszer jelzi, ha a felhasználónév, vagy a jelszó nem megfelelő.<br>
 <br>
+<br>
+<center>A rendszer jelzi, ha a felhasználónév, vagy a jelszó nem megfelelő.</center><br>
 ";?>
 
 <p align="center">
@@ -50,44 +50,43 @@ A rendszer jelzi, ha a felhasználónév, vagy a jelszó nem megfelelő.<br>
 <?php print"
 <br>
 <br>
-Editor<br>
-Dokumentumtár<br>
+<u>Editor</u> - Dokumentumtár<br>
+<br>
     A Dokumentumtár lehetőséget ad a korábban eltárolt dokumentumok megnyitására -a kiválasztott dokumentummal egy sorban lévő “Edit” gomb segítségével-, valamint új dokumentum hozzáadására, a “Create new” gomb segítségével. A rendszerbe belépett felhasználó csak az általa létrehozott dokumentumokat látja megjelenni a listában.<br>
 <br>";?>
 
 <p align="center">
-	<img src="/images/about_4.jpg" alt="" >
+	<img src="/images/about_4.jpg" alt="" width="80%" length="80%">
 </p>
 
 <?php print"
-Szerkesztő felület<br>
-A szerkesztő ablak három fő részre oszlik: <br>
-Bal oldalon, zölddel jelölten maga a forráskód bevitelére, szerkesztésére szolgáló felület található.<br>
-Jobb oldalon, pirossal keretezve az előnézet helyezkedik el.<br>
-Az sárgával jelölt területen a kommentálásra szolgáló beviteli mező, valamint a korábbi kommentek megjelenítésére szolgáló felület helyezkedik el.<br>
-<br>";?>
+<u>Editor</u> - Szerkesztő felület<br>
+<br>A szerkesztő ablak három fő részre oszlik: <br>
+- Bal oldalon, zölddel jelölten maga a forráskód bevitelére, szerkesztésére szolgáló felület található.<br>
+- Jobb oldalon, pirossal keretezve az előnézet helyezkedik el.<br>
+- Az sárgával jelölt területen a kommentálásra szolgáló beviteli mező, valamint a korábbi kommentek megjelenítésére szolgáló felület helyezkedik el.<br>
+";?>
 
 <p align="center">
-	<img src="/images/about_5.jpg" alt="" >
+	<img src="/images/about_5.jpg" alt="" width="80%" length="80%">
 </p>
 
 <?php print"
-<br>Előnézet
+<u>Editor</u> - Előnézet<br>
 <br>A dokumentum előnézetét az Editor ablak felső részén elhelyezkedő “Save & Preview” gomb segítségével lehet frissíteni. Ekkor a rendszer a forráskód változásait is menti.
-<br>
-<br>";?>
+<br><br>";?>
 
 <p align="center">
-	<img src="/images/about_6.jpg" alt="" >
+	<img src="/images/about_6.jpg" alt="" width="80%" length="80%">
 </p>
 
 <?php print"
-Comment felület<br>
-A kommentek írására, megjelenítésére szolgáló eszköz a felhasználóknak nyújthat segítséget azzal, hogy a megosztott dokumentumok készítése során egymás munkáját interaktívan tudják segíteni. A felület alsó részén szövegbeviteli mezőbe írható egy új komment, feljebb a korábbi megjegyzések olvashatók, időbélyegzővel, valamint a kommentelő felhasználónevével ellátva.<br>
+<u>Editor</u> - Comment felület <br>
+<br>A kommentek írására, megjelenítésére szolgáló eszköz a felhasználóknak nyújthat segítséget azzal, hogy a megosztott dokumentumok készítése során egymás munkáját interaktívan tudják segíteni. A felület alsó részén szövegbeviteli mezőbe írható egy új komment, feljebb a korábbi megjegyzések olvashatók, időbélyegzővel, valamint a kommentelő felhasználónevével ellátva.<br>
 ";?>
 	</p>
 </div>
 
 <p align="center">
-	<img src="/images/about_7.jpg" alt="" >
+	<img src="/images/about_7.jpg" alt="" width="80%" length="80%">
 </p>
