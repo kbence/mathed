@@ -55,7 +55,7 @@ class EditorController extends AuthController
         if ($document) {
             $links = $this->getPreviewUrls($documentId);
 
-            $this->render('view', array('title' => $document->title, 'imageUrls' => $links));
+            $this->render('view', array('document' => $document, 'imageUrls' => $links));
         } else {
             $this->render('unauthorized');
         }
