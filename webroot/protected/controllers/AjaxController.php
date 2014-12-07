@@ -4,9 +4,11 @@ class AjaxController extends AuthController
 {
     public function actionSaveDocument()
     {
-        $documentId = $this->getRequest()->getParam('id', -1);
-        $content = $this->getRequest()->getParam('tex');
-        $title = $this->getRequest()->getParam('title');
+        $request = $this->getRequest();
+        $documentId = $request->getParam('id', -1);
+        $content = $request->getParam('tex');
+        $title = $request->getParam('title');
+        $shared = $request->getParam('shared');
 
         if ($documentId == -1) {
             $document = new Document();
@@ -20,6 +22,9 @@ class AjaxController extends AuthController
             $document->id = $documentId;
             $document->title = $title;
             $document->content = $content;
+            $document->shared = strtolower($shared) == 'true' ? 1 : 0;
+
+            $result['doc'] = print_r($shared, true);
 
             if ($document->save()) {
                 $result['status'] = 'OK';

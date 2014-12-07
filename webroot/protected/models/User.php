@@ -14,7 +14,7 @@ class User extends CActiveRecord
 
     public static function existsWithName($name)
     {
-        return !!User::model()->find(array('name' => $name));
+        return !!self::model()->findByAttributes(array('name' => $name));
     }
 
     public static function create($name, $email, $password)

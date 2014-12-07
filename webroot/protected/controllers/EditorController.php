@@ -16,7 +16,8 @@ class EditorController extends AuthController
         $userId = Yii::app()->user->id;
 
         $this->render('index', array(
-            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId))
+            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId)),
+            'shared_documents' => Document::model()->findAllByAttributes(array('shared' => 1))
         ));
     }
 
@@ -39,9 +40,44 @@ class EditorController extends AuthController
         $document = Document::model()->findByPk($documentId);
 
         if ($document->owner == Yii::app()->user->id) {
-            $this->render('edit', array('model' => $document));
+            $imageUrls = $this->getPreviewUrls($documentId);
+            $this->render('edit', array('document' => $document, 'imageUrls' => $imageUrls));
         } else {
             $this->render('unauthorized');
         }
+    }
+
+    public function actionView()
+    {
+        $documentId = $this->getRequest()->getParam('id');
+        $document = Document::model()->findByPk($documentId);
+
+        if ($document) {
+            $links = $this->getPreviewUrls($documentId);
+
+            $this->render('view', array('document' => $document, 'imageUrls' => $links));
+        } else {
+            $this->render('unauthorized');
+        }
+    }
+
+    /**
+     * @param $documentId
+     * @return array
+     */
+    protected function getPreviewUrls($documentId)
+    {
+        $cache = new DocumentCache($this->getDatabase());
+        $imageCount = $cache->getPngImageCount($documentId);
+        $links = array();
+
+        for ($image = 0; $image < $imageCount; $image++) {
+            $links[] = $this->createUrl('ajax/getImage', array(
+                'id' => $documentId,
+                'part' => $image,
+                'random' => microtime(true)
+            ));
+        }
+        return $links;
     }
 }

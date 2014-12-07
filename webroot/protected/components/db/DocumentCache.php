@@ -74,6 +74,20 @@ class DocumentCache
         return $content;
     }
 
+    public function getPngImageCount($documentId)
+    {
+        $cmd = $this->dbConnetion->createCommand(
+            'SELECT COUNT(1) FROM document_cache ' .
+            'WHERE document_id = :document_id '
+        );
+
+        $count = $cmd->queryScalar(array(
+            'document_id' => $documentId
+        ));
+
+        return $count;
+    }
+
     public function cleanCache($documentId, $type)
     {
         $cmd = $this->dbConnetion->createCommand(
