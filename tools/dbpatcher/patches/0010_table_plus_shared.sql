@@ -1,0 +1,2 @@
+ALTER TABLE `document`
+    ADD COLUMN `shared` BOOLEAN NOT NULL DEFAULT '';
