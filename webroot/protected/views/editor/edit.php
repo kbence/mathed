@@ -33,6 +33,9 @@ Megosztás:<label id="checkbox_in"><input id="cb_shared" type="checkbox"<?php if
     <div id="wl_divider" onMouseMove="moveDivider()" onmousedown="moveDividerClick()"
          onmouseup="moveDividerOut()"></div>
     <div id="wl_preview">
+        <?php foreach ($imageUrls as $id => $url): ?>
+            <img src="<?php echo $url ?>" alt="Page <?php echo $id + 1 ?>" width="100%"/>
+        <?php endforeach ?>
     </div>
 </div>
 
