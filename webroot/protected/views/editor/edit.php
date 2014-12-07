@@ -21,7 +21,7 @@ Title: <input type="text" id="document-title" size="64" value="<?php echo $model
 
 <button onclick="Editor.save()">Save</button>
 <button onclick="Editor.saveAndPreview()">Save & preview</button>
-Megosztás:<label id="checkbox_in"><input id="cb_shared" type="checkbox" /></label>
+Share:<label id="checkbox_in"><input id="cb_shared" type="checkbox" /></label>
 <span id="progress-text"></span><br/>
 
 <div id="toolbar"></div>
