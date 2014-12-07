@@ -5,5 +5,6 @@ CREATE TABLE document(
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     created DATETIME NOT NULL,
+	shared BOOLEAN NOT NULL,
     PRIMARY KEY(id)
 );

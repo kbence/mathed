@@ -31,7 +31,12 @@ var EditorToolbar = (function() {
             "check": "\\check{$}",
             "brave": "\\brave{$}",
             "acute": "\\acute{$}",
-            "grave": "\\grave{$}"
+            "grave": "\\grave{$}",
+            "tilde": "\\tilde{$}",
+            "bar": "\\bar{$}",
+            "vec": "\\vec{$}",
+            "dot": "\\dot{$}",
+            "ddot": "\\ddot{$}"			
         },
         "operation": {
             "plusminus": "\\pm",
@@ -41,7 +46,8 @@ var EditorToolbar = (function() {
             "sat": "\\ast",
             "cdot": "\\cdot",
             "circ": "\\circ",
-            "bullet": "\\bullet",
+            "bullet": "\\bullet",			
+			"otimes": "\\otimes",
             "oplus": "\\oplus",
             "ominus": "\\ominus",
             "odot": "\\odot",
@@ -90,7 +96,7 @@ var EditorToolbar = (function() {
         },
         "relation": {
             "in": "\\in",
-            "notin": "\\not\\in",
+            "notin": "\\notin",
             "cup": "\\cup",
             "cap": "\\cap",
             "bigcup": "\\bigcup",
@@ -133,7 +139,7 @@ var EditorToolbar = (function() {
             "lambda": "\\lambda",
             "mu": "\\mu",
             "nu": "\\nu",
-            "omicron": "\\omicron",
+            "omicron": "o",
             "pi": "\\pi",
             "varpi": "\\varpi",
             "theta": "\\theta",
@@ -168,14 +174,77 @@ var EditorToolbar = (function() {
             "rho": "P",
             "sigma": "\\Sigma",
             "tau": "T",
-            "upsilon": "Y",
+            "upsilon": "\\Upsilon",
             "omega": "\\Omega",
             "xi": "\\Xi",
             "psi": "\\Psi",
             "zeta": "Z"
-        }
+        },
+		"bookmarks": {
+			"left_dot": "\\left.",
+			"right_dot": "\\right.",
+			"left_bracket": "\\left(",
+			"right_bracket": "\\right)",
+			"left_square_bracket": "\\left\\[",
+			"right_square_bracket": "\\right\\]",			
+			"left_curly_bracket": "\\left\\{",
+			"right_curly_bracket": "\\right\\}",
+			"leftlfloor": "\\left\\lfloor",
+			"rightrfloor": "\\right\\rfloor",			
+			"leftlceil": "\\left\\lceil",
+			"rightrceil": "\\right\\rceil",	
+			"leftlangle": "\\left\\langle",
+			"rightrangle": "\\right\\rangle",				
+			"leftI": "\\left|",
+			"rightI": "\\right|",
+			"leftII": "\\left\\|",
+			"rightII": "\\right\\|",			
+			"overbrace": "\\overbrace{}^{}",
+			"underbrace": "\\underbrace{}_{}"			
+		},
+		"matemathical_constructions": {
+			"frac": "\\frac{}{}",
+			"div": "/",
+			"sqrt": "\\sqrt{}",
+			"sqrtbracket": "\\sqrt[]{}"
+		},
+		"subscriptsuperscript": {
+			"subsuper1": "^{}",
+			"subsuper2": "_{}",
+			"subsuper3": "^{}_{}",
+			"subsuper4": "^{}",
+			"subsuper5": "_{}",
+			"subsuper6": "^{}_{}",			
+			"subsuper7": "^{}",
+			"subsuper8": "_{}",
+			"subsuper9": "^{}_{}"
+		},
+		"operators": {
+			"sum": "\\sum",
+			"int": "\\int",
+			"oint": "\\oint",
+			"prod": "\\prod",
+			"coprod": "\\coprod"		
+		},
+		"abovebelow": {
+			"overline": "\\overline{}",
+			"underline": "\\underline{}",
+			"widehat": "\\widehat{}",
+			"widetilde": "\\widetilde{}",
+			"stackrel": "\\stackrel{}{}",
+			"overbrace": "\\overbrace{}^{}",			
+			"underbrace": "\\underbrace{}_{}"
+		},
+		"arrowswithcaptions": {
+			"stackrelrightarrow": "\\stackrel{}{\\rightarrow}",
+			"stackrelleftarrow": "\\stackrel{}{\\leftarrow}",
+			"stackrelleftrightarrow": "\\stackrel{}{\\leftrightarrow}",
+			"stackrelrightarrow2": "\\stackrel{\\rightarrow}{}",
+			"stackrelleftarrow2": "\\stackrel{\\leftarrow}{}",
+			"stackrelleftrightarrow2": "\\stackrel{\\leftrightarrow}{}"
+		}
     };
-
+	
     function createDiv() {
         return $('<div></div>');
     }

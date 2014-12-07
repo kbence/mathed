@@ -94,3 +94,9 @@ var Editor = (function() {
 $(function() {
     Editor.init()
 });
+
+$('#cb_shared').click(function(){
+	if ($(this).is(":checked")) alert('Megosztva'); else alert('Nincs megosztva');
+			
+});
+

@@ -87,5 +87,6 @@ class DocumentCache
             'type' => $type
         ));
     }
+	
 }
 
