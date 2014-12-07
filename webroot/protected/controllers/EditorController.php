@@ -40,7 +40,7 @@ class EditorController extends AuthController
         $document = Document::model()->findByPk($documentId);
 
         if ($document->owner == Yii::app()->user->id) {
-            $this->render('edit', array('model' => $document));
+            $this->render('edit', array('document' => $document));
         } else {
             $this->render('unauthorized');
         }
