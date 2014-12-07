@@ -45,7 +45,8 @@ var Editor = (function() {
         save: function (callback) {
             var document = {
                 tex: editor.getValue(),
-                title: $('#document-title').val()
+                title: $('#document-title').val(),
+                shared: $('#cb_shared').is(':checked')
             };
 
             if (documentId) {
@@ -93,10 +94,5 @@ var Editor = (function() {
 
 $(function() {
     Editor.init()
-});
-
-$('#cb_shared').click(function(){
-	if ($(this).is(":checked")) alert('Megosztva'); else alert('Nincs megosztva');
-			
 });
 
