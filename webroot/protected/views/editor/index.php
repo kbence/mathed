@@ -6,13 +6,10 @@ $clientScript = Yii::app()->clientScript;
 $clientScript->registerCoreScript('jquery');
 ?>
 
+<h1>Own documents</h1>
 <a href="<?php echo $this->createUrl('new') ?>">Create new</a>
+<?php $this->renderPartial('document_list', array('documents' => $documents, 'edit' => true)) ?>
 
-<table>
-    <?php foreach ($documents as $doc): ?>
-        <tr>
-            <td><?php echo $doc->title ?></td>
-            <td><a href="?r=editor/edit&amp;id=<?php echo $doc->id ?>">Edit</a></td>
-        </tr>
-    <?php endforeach ?>
-</table>
+<h1>Shared documents</h1>
+<?php $this->renderPartial('document_list', array('documents' => $shared_documents, 'edit' => false)) ?>
+

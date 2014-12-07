@@ -16,7 +16,8 @@ class EditorController extends AuthController
         $userId = Yii::app()->user->id;
 
         $this->render('index', array(
-            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId))
+            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId)),
+            'shared_documents' => Document::model()->findAllByAttributes(array('shared' => $userId))
         ));
     }
 
@@ -43,5 +44,10 @@ class EditorController extends AuthController
         } else {
             $this->render('unauthorized');
         }
+    }
+
+    public function actionView()
+    {
+        $this->render('view');
     }
 }
