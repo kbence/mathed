@@ -15,9 +15,18 @@ class EditorController extends AuthController
     {
         $userId = Yii::app()->user->id;
 
+        $documents = Document::model()->findAllByAttributes(array('owner' => $userId));
+        $sharedDocuments = Document::model()->findAllByAttributes(array('shared' => 1));
+        $ownerIds = array_unique(array_merge(
+            $this->extractAllOwners($documents),
+            $this->extractAllOwners($sharedDocuments)
+        ));
+        $users = array_combine($ownerIds, array_map(array(User::model(), 'findByPk'), $ownerIds));
+
         $this->render('index', array(
-            'documents' => Document::model()->findAllByAttributes(array('owner' => $userId)),
-            'shared_documents' => Document::model()->findAllByAttributes(array('shared' => 1))
+            'documents' => $documents,
+            'users' => $users,
+            'shared_documents' => $sharedDocuments
         ));
     }
 
@@ -79,5 +88,19 @@ class EditorController extends AuthController
             ));
         }
         return $links;
+    }
+
+    /**
+     * @param $documents Document[]
+     */
+    protected function extractAllOwners($documents)
+    {
+        $owners = array();
+
+        foreach ($documents as $document) {
+            $owners[] = $document->owner;
+        }
+
+        return array_unique($owners);
     }
 }
